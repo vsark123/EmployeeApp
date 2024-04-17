@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @CrossOrigin("http://localhost:3000/")
 public class AdminController {
 
@@ -55,15 +55,15 @@ public class AdminController {
 	}
 
 	@PostMapping("createEmployeeAccount")
-	public ResponseEntity<Login> createEmployeeAccount(@RequestBody Login login) {
+	public ResponseEntity<Login> createEmployeeAccount(@RequestBody Login login, @RequestParam Role role) {
 		Employee employee = new Employee();
 		employee.setEmail(login.getEmail());
-		employee.setRole(Role.EMPLOYEE);
+		employee.setRole(role);
 		login.setEmployee(employee);
 		employeeService.saveEmployee(employee);
 		return new ResponseEntity<Login>(adminService.createEmployeeAccount(login), HttpStatus.CREATED);
 	}
-	
+
 	@DeleteMapping("deleteEmployeeAccount")
 	public ResponseEntity<Login> deleteEmployeeAccount(@RequestBody Login login) {
 		Employee employee = new Employee();

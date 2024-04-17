@@ -44,25 +44,18 @@ public class ProjectServiceImpln implements ProjectService {
 			Employee employee = optionalEmployee.get();
 			Project project = optionalProject.get();
 
-//			System.out.println(optionalEmployee.get());
-//			System.out.println(optionalProject.get());
+			System.out.println(employee);
+			System.out.println(project);
 
 			if (employee.getProjects().size() == 0) {
-				employee.setProjects(new ArrayList<Project>());
+				employee.setProjects(new ArrayList<>());
 			}
 
-			if (employee.getProjects().size() == 0) {
-				project.setEmployees(new ArrayList<Employee>());
-			}
-
-			List<Employee> employees = project.getEmployees();
-			employees.add(employee);
 
 			List<Project> projects = employee.getProjects();
 			projects.add(project);
-
-			project.setEmployees(employees);
-//			employee.setProjects(projects);
+			
+			employee.setProjects(projects);
 
 			projectDao.saveProject(project);
 
@@ -73,6 +66,8 @@ public class ProjectServiceImpln implements ProjectService {
 			return responseStructure;
 		}
 	}
+	
+	
 
 	@Override
 	public ResponseStructure<String> deleteProject(int projectId) {

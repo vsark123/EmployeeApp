@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.jsp.employeeapp.entity.Employee;
+import org.jsp.employeeapp.entity.EmployeeLeave;
 import org.jsp.employeeapp.entity.Project;
 import org.jsp.employeeapp.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +32,12 @@ public class EmployeeDao {
 		employeeRepository.delete(employee);;
 	}
 
-	public Project findProjectByEmployeeId(int employeeId) {
-		System.out.println("hii");
-		Project project = employeeRepository.findProjectByEmployeeId(employeeId);
-		System.out.println(project);
-		return project;
+	public List<Project> findProjectByEmployeeId(int employeeId) {
+		return employeeRepository.findProjectByEmployeeId(employeeId);
+	}
+	
+	public List<EmployeeLeave> findEmployeeLeaveByEmployeeId(int employeeId) {
+		return employeeRepository.findEmployeeLeaveByEmployeeId(employeeId);
 	}
 
 }

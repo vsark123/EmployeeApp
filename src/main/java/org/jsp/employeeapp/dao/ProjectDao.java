@@ -24,4 +24,6 @@ public class ProjectDao {
 	public void deleteProject(Project project) {
 		projectRepository.delete(project);
 	}
+	
+	
 }
