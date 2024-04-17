@@ -1,5 +1,7 @@
 package org.jsp.employeeapp.controller;
 
+import java.util.List;
+
 import org.jsp.employeeapp.entity.Employee;
 import org.jsp.employeeapp.entity.Project;
 import org.jsp.employeeapp.service.EmployeeService;
@@ -47,8 +49,8 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("findProjectByEmployeeId")
-	public ResponseEntity<ResponseStructure<Project>> findProjectByEmployeeId(@RequestHeader int employeeId) {
-		return new ResponseEntity<ResponseStructure<Project>>(employeeService.findProjectByEmployeeId(employeeId), HttpStatus.CREATED);
+	public ResponseEntity<ResponseStructure<List<Project>>> findProjectByEmployeeId(@RequestHeader int employeeId) {
+		return new ResponseEntity<ResponseStructure<List<Project>>>(employeeService.findProjectByEmployeeId(employeeId), HttpStatus.CREATED);
 	}
 
 }

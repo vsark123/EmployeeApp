@@ -1,5 +1,7 @@
 package org.jsp.employeeapp.service;
 
+import java.util.List;
+
 import org.jsp.employeeapp.entity.Employee;
 import org.jsp.employeeapp.entity.Project;
 import org.jsp.employeeapp.util.ResponseStructure;
@@ -19,7 +21,7 @@ public interface EmployeeService {
 
 	ResponseStructure<String> deleteEmployee(int employeeId);
 	
-	ResponseStructure<Project> findProjectByEmployeeId(int employeeId);
+	ResponseStructure<List<Project>> findProjectByEmployeeId(int employeeId);
 	
 
 }

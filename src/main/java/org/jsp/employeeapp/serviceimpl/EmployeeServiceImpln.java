@@ -1,5 +1,7 @@
 package org.jsp.employeeapp.serviceimpl;
 
+import java.util.List;
+
 import org.jsp.employeeapp.dao.EmployeeDao;
 import org.jsp.employeeapp.entity.Employee;
 import org.jsp.employeeapp.entity.Project;
@@ -74,10 +76,9 @@ public class EmployeeServiceImpln implements EmployeeService {
 	}
 
 	@Override
-	public ResponseStructure<Project> findProjectByEmployeeId(int employeeId) {
-		ResponseStructure<Project> responseStructure = new ResponseStructure<>();
-
-		employeeDao.findProjectByEmployeeId(employeeId);
+	public ResponseStructure<List<Project>> findProjectByEmployeeId(int employeeId) {
+		ResponseStructure<List<Project>> responseStructure = new ResponseStructure<>();
+		responseStructure.setData(employeeDao.findProjectByEmployeeId(employeeId));
 		return responseStructure;
 	}
 
